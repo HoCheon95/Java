@@ -24,3 +24,4 @@ Scanner.next();
 Scanner.nextLine();
 
 int num = Integer.parseInt(scan.nextLine()); // 문자열로 한 줄 입력을 받은 뒤 -> 정수로 변환
+

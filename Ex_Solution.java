@@ -253,11 +253,234 @@ public int solution(int[] dot) {
 
 /*======================================================================*/
 
+'배열의 유사도'
+두 배열이 얼마나 유사한지 확인해보려고 합니다. 문자열 배열 s1과 s2가 주어질 때 같은 원소의 개수를 
+return하도록 solution 함수를 완성해주세요.
+
+s1					s2								result
+["a", "b", "c"]		["com", "b", "d", "p", "c"]		2
+["n", "omg"]		["m", "dot"]					0
+
+public int solution(String[] s1, String[] s2){
+	int answer = 0;
+
+	for(int i = 0; i < s1.length; i++){		// s1배열 길이만큼 for
+		for(int j = 0; j < s2.length; j++){	// s2배열 길이만큼 for
+			if(s1[i].equals(s2[j])){		// s1 값과 s2값의 문자열 비교 함수 equals
+				answer++;
+			}
+		}
+	}
+
+	return answer;
+
+}
 /*======================================================================*/
+
+'순서쌍의 개수'
+순서쌍이란 두 개의 숫자를 순서를 정하여 짝지어 나타낸 쌍으로 (a, b)로 표기합니다. 
+자연수 n이 매개변수로 주어질 때 두 숫자의 곱이 n인 자연수 순서쌍의 개수를 return하도록 solution
+함수를 완성해주세요.
+
+n		result
+20		6
+100		9
+
+public int solution(int n){
+	int answer = 0;
+
+	for(int i =1; i <= n; i ++){
+		if(n % i == 0){
+			answer++;
+	}
+	return answer;
+}
 
 /*======================================================================*/
 
+'n의 배수 고르기'
+정수 n과 정수 배열 numlist가 매개변수로 주어질 때, numlist에서 n의 배수가 아닌 수들을 제거한 배열을 
+return하도록 solution 함수를 완성해주세요.
+
+n	numlist							result
+3	[4, 5, 6, 7, 8, 9, 10, 11, 12]	[6, 9, 12]
+5	[1, 9, 3, 10, 13, 5]			[10, 5]
+12	[2, 100, 120, 600, 12, 12]		[120, 600, 12, 12]
+
+
+
 /*======================================================================*/
+
+'n의 배수 고르기'
+정수 n과 정수 배열 numlist가 매개변수로 주어질 때, numlist에서 n의 배수가 아닌 수들을 제거한 배열을기
+return하도록 solution 함수를 완성해주세요.
+
+n	numlist							result
+3	[4, 5, 6, 7, 8, 9, 10, 11, 12]	[6, 9, 12]
+5	[1, 9, 3, 10, 13, 5]			[10, 5]
+12	[2, 100, 120, 600, 12, 12]		[120, 600, 12, 12]
+
+public int[] solution(int n, int[] numlist) {
+
+		int j =0;
+
+		for(int i =0; i < numlist.length; i++){
+			if(numlist[i] % n == 0){ // n의 배수의 개수를 구하는 조건식
+				j++;
+			}
+		}
+
+        int[] answer = new int[j]; // n의 배수를 answer 배열의 크기로 지정
+		j = 0;
+
+		for(int i = 0; i < numlist.length; i++){
+			if(numlist[i] % n == 0){
+				answer[j] = numlist[i];
+				j++;
+			}
+		}
+
+        return answer;
+}
+
+/*======================================================================*/
+
+'배열 원소의 길이'
+문자열 배열 strlist가 매개변수로 주어집니다. 
+strlist 각 원소의 길이를 담은 배열을 return하도록 solution 함수를 완성해주세요.
+
+
+strlist							result
+["We", "are", "the", "world!"]	[2, 3, 3, 6]
+["I", "Love", "Programmers."]	[1, 4, 12]
+
+public int[] solution(String[] strlist) {
+	int[] answer = new int[strlist.length];
+
+	for(int i = 0; i < strlist.length; i++){
+		answer[i] = strlist[i].length();
+	}
+
+	return answer;
+}
+
+/*======================================================================*/
+
+'아이스 아메리카노'
+머쓱이는 추운 날에도 아이스 아메리카노만 마십니다. 아이스 아메리카노는 한잔에 5,500원입니다. 
+머쓱이가 가지고 있는 돈 money가 매개변수로 주어질 때, 머쓱이가 최대로 마실 수 있는 아메리카노의 잔 수와 남는 돈을 
+순서대로 담은 배열을 return 하도록 solution 함수를 완성해보세요.
+
+money	result
+5,500	[1, 0]
+15,000	[2, 4000]
+
+public int[] solution(int money) {
+	int[] answer = new int[2];
+
+	answer[0] = money / 5500; // 몫
+	answer[1] = money % 5500; // 나머지
+
+	return answer;
+	//return new int[] {money / 5500, money % 5500}; 이렇게도 사용이 가능하다.
+}
+
+
+/*======================================================================*/
+
+'문자열안에 문자열'
+문자열 str1, str2가 매개변수로 주어집니다. 
+str1 안에 str2가 있다면 1을 없다면 2를 return하도록 solution 함수를 완성해주세요.
+
+str1						str2		result
+"ab6CDE443fgh22iJKlmn1o"	"6CD"		1
+"ppprrrogrammers"			"pppp"		2
+"AbcAbcA"					"AAA"		2
+
+public int solution(String str1, String str2) {
+        int answer = 0;
+		
+		if(str1.contains(str2)){ // contains() 함수는 서로다른 문자열을 비교한다.
+			answer = 1;
+		}else{
+			answer = 2;
+		}
+
+        return answer;
+}
+/*======================================================================*/
+
+'문자 반복 출력하기'
+문자열 my_string과 정수 n이 매개변수로 주어질 때, my_string에 들어있는 각 문자를 n만큼 반복한 문자열을 
+return 하도록 solution 함수를 완성해보세요.
+
+my_string		n	result
+"hello"			3	"hhheeellllllooo"
+
+public String solution(String my_string, int n){
+	String answer = "";
+	
+	for(int i = 0; i < my_string.length(); i++){ // my_string에 들어있는 문자열의 길이만큼 for문 동작
+		for(int j = 1; j <= n; j++){ // n만큼 반복할 회수 
+			answer += my_string.charAt(i); // my_string에서 i번째만큼 꺼내서 j만큼 반복 출력
+		}
+	}
+	return answer;
+}
+
+/*======================================================================*/
+
+'제곱수 판별하기'
+어떤 자연수를 제곱했을 때 나오는 정수를 제곱수라고 합니다. 정수 n이 매개변수로 주어질 때, 
+n이 제곱수라면 1을 아니라면 2를 return하도록 solution 함수를 완성해주세요.
+
+n		result
+144		1
+976		2
+
+public int solution(int n){
+	int answer = 0;
+	
+	for(int i = 1; i <= n; i++){ // for반복문을 통해 n번만큼 동작
+		if(i * i == n){ // i * i 를 통해서 제곱근을 찾는다.
+			answer = 1;
+			break;
+		}else{
+			answer = 2;
+		}
+	}
+
+	return answer;
+}
+/*======================================================================*/
+
+'특정 문자 제거하기'
+문자열 my_string과 문자 letter이 매개변수로 주어집니다. my_string에서 letter를 제거한 문자열을
+return하도록 solution 함수를 완성해주세요.
+
+my_string	letter	result
+"abcdef"	"f"		"abcde"
+"BCBdbe"	"B"		"Cdbe"
+
+public String solution(String my_string, String letter){
+	String answer = "";
+
+	for(int i = 0; i < my_string.length(); i++){
+		if(!(my_string.charAt(i) == letter.charAt(0))){
+			answer += my_string.charAt(i);
+		}
+	}
+	return answer;
+}
+/*======================================================================*/
+
+'모음 제거'
+영어에선 a, e, i, o, u 다섯 가지 알파벳을 모음으로 분류합니다. 문자열 my_string이 매개변수로 
+주어질 때 모음을 제거한 문자열을 return하도록 solution 함수를 완성해주세요.
+
+my_string			result
+"bus"				"bs"
+"nice to meet you"	"nc t mt y"
 
 /*======================================================================*/
 

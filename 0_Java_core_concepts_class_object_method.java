@@ -1,3 +1,13 @@
+※ OOP란?
+ - Object-Oriented-Programming
+ - 객체지향프로그래밍
+※ 특징
+ 1. 캡슐화
+ 2. 상속
+ 3. 다형성
+ 4. 추상화
+
+
 1) 클래스(Class)
  - 설계도 / 틀
  - "어떤 데이터를 가지고(필드), 어떤 행동을 할지(메서드)"를 한 덩어이로 정의한 것
@@ -45,8 +55,22 @@ class Car{
  
  (3) 정적 변수(static 변수, 클래스 변수)
   - 객체마다 따로 있는 게 아니라, '클래스에 1개만 공유'
-class Car{
-	static int count = 0;
+class Counter{
+	static int count = 0; // 정적변수 
+
+	Counter(){
+		count++; // 객체가 생성될 때마다 증가
+	}
+}
+public class Main {
+    public static void main(String[] args) {
+
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println(Counter.count); // 3
+    }
 }
 
 /*======================================================================*/

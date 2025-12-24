@@ -338,9 +338,147 @@ class MyDate09{
 
 /*======================================================================*/
 
-/*======================================================================*/
+Day09_java/ClassEx10.java
+자바에서 생성자가 오버로딩이 안되었을 때는 컴파일러가 메개변수가 없는 기본생성자를 묵시적으로 제공한다.
+하지만 생성자가 오버로딩이 되면 기본생성자 묵시적 제공을 하지 않는다. 이런 경우 기본생성자를 호출하려다가
+'컴파일에러가 발생하는 예제소스' 이다.
+class Data10{
+	int value; //클래스 소속의 멤버변수(속성)중 인스턴스 변수
+	
+	// 생성자 오버로딩이 되어서 기본생성자 묵시적 제공을 안함
+
+	//Data10(){ } // 2. 해결방안 | 기본생성자를 호출해서 컴파일 에러 해결
+	Data10(int value){
+		this.value = value;
+	}// 매개변수 개수가 다른 생성자 오버로딩
+
+	void pr(){
+		System.out.printf("value = %d \n", value);
+	}// 사용자 저으이 메서드 pr()
+}// Data10 class
+
+public class ClassEx10{
+	public static void main(String[] args){
+		//new Data10(100).or(); // 1. 해결방안 | 오버로딩 생성자 호출 컴파일 에러 해결
+		new Data10().pr();
+		// new Data10();에 의해서 묵시적으로 제공되지 않는 기본생성자를 호출하려다가 컴파일 에러가 발생함
+	}
+}
 
 /*======================================================================*/
 
+Day09_java/ClassEx11.java
+this()에 의해서 같은 클래스내에서 오버로딩 된 다른 생성자를 호출해 본다.
+
+class Car11{
+	String color; // 차 색상
+	String gaerType; // 변속기 종류 : auto(자동), 수동
+	int door; // 문의 개수
+
+	Car11(){
+		this("white", "auto", 4); // 같은 클래스내에서 매개변수 3개짜리 오버로딩 된 생성자를 호출
+	}
+
+	Car11(String color, String gearType, int door){
+		this.color = color;
+		this.gearType = gearType;
+		this.door = door;
+	}// 매개변수 개수가 다른 생성자 오버로딩
+
+	void print(){
+		System.out.println("차색상 : " + color + ", 변속기 종류 : " + gearType + ", 차문 개수 : " + door);
+	}
+}// Car11 class
+
 /*======================================================================*/
+
+Day09_java/ClassEx12.java
+생성자 오버로딩에 관한 예제
+
+class Car12{
+	String color;
+	String gearType;
+	int door;
+
+	/*
+	 * 클래스 소속의 멤버변수를 명시적 코드로 초기화를 하지 않으면 자바는 다음과 같은 기본값으로 초기화를 한다.
+	 * 참조 즉 레퍼런트 타입 : null, boolean 타입 : false
+	 * byte,short,int : 0, long : 0L, float : 0.0f, double : 0.0 또는 0.0d
+	 */
+
+	Car12(){ // 매개변수가 없는 기본생성자
+		this("white", "auto", 4); // 같은 클래스내의 배개변수 3개짜리 오버로딩 된 다른 생성자를 호출
+	}
+	
+	Car12(Car12 c){ // 생성자를 이용한 객체 복사 | car01객체 주소를 받아오지만 주소 변수의 값만 복사
+		color = c.color; // car01 주소의 color 값만 저장
+		gearType = c.gearType; // car01 주소의 gearType 값만 저장
+		door = c.door; // 값만 복사
+	}// 생성자 오버로딩
+
+	Car12(String color, String gearType, int door){
+		this.color = color;
+		this.gearType = gearType;
+		this.door = door;
+	}
+
+	void pr(){
+		System.out.printf("차색상 : %s, 변속기 종류 : %s, 차문 개수 : %d \n", color, gearType, door);
+	}
+
+}
+public class ClassEx12{
+	public static void main(String[] args){
+
+		Car12 car01 = new Car12(); // car01 참조변수 | new Car12(); 객체 생성
+		car01.pr();
+		Car12 car02 = new Car12(car01); // 생성자 인자값으로 car01객체 전달 (주소전달)
+
+		car01.door = 6;
+		car01.pr();	// 차문 개수가 4에서 6으로 변경
+		car02.pr(); // car01과 car02는 서로 다른 객체주소를 가진다. 그러므로 값도 다른값을 가진다.
+	
+	}
+}
+
+
+/*======================================================================*/
+
+Day09_java/ClassEx13.java
+클래스 초기화 블록, 인스턴스 초기화 블록
+
+public class ClassEx13{
+	int a;
+
+	static {
+		/*
+		클래스 초기화 블록으로 해당 클래스가 로드 실행될 떄 같이 딱 한번 만 실행한다.
+		이 초기화 블록은 static 키워드로 정의하고 정적변수 초기화에 사용된다.
+		*/
+	}
+
+	{
+		a = 100;
+		/*
+		이 영역은 인스턴스 초기화 블록{}이다. 클래스 소속 멤버변수 중 객체 생성해서 접근하는 인스턴스 변수
+		초기화에 사용한다. 인스턴스 초기화 블록은 생성자와 같이 객체가 생성될 때 마다 실행한다.
+		주의할 것은 인스턴스 변수 초기화에는 주로 생성자를 사용하고 모든 생성자에서 공통으로 사용되는 코드 부분은
+		인스턴스 초기화 블록에서 사용한다.
+		*/
+	}
+
+	public ClassEx13(){
+		/*
+		생성자 보다 인스턴스 초기화 블록이 먼저 실행된다.
+		*/
+	}
+
+	public static void main(String[] args){
+		new ClassEx13(); // 먼저 인스턴스 초기화 블록을 실행하고 난 다음 생성자를 호출
+		new ClassEx13(); // 객체가 생성될 때 마다 인스턴스 초기화 블록과 생성자를 호출
+		ClassEx13 cex13 = new ClassEx13();
+	}
+}
+
+
 

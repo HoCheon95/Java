@@ -482,8 +482,193 @@ my_string			result
 "bus"				"bs"
 "nice to meet you"	"nc t mt y"
 
+public String solution(String my_string){
+	String answer = "";
+	String mo = "aeiou";
+
+	for(int i = 0; i < my_string.length(); i++){
+		char ch = my_string.charAt(i);
+		boolean isVal = false;
+		for(int j = 0; j < mo.length(); j++){
+			if(mo.charAt(j) == ch){
+				isVal = true;
+			}
+		}
+
+		if(!isVal){
+			answer += ch;
+		}
+	}
+	
+	return answer;
+
+	-----------------------------------------------------------------
+	String[] mo = {"a", "e" , "i", "o", "u"};
+
+	for(int i = = 0; i < mo.length; i++){
+		my_string = my_string.repalce(mo.[i],'');	
+	}
+
+	return my_string;
+
+}
+/*======================================================================*/
+
+'짝수 홀수 개수'
+정수가 담긴 리스트 num_list가 주어질 때, num_list의 원소 중 짝수와 홀수의 개수를 담은 배열을 
+return 하도록 solution 함수를 완성해보세요.
+
+num_list			result
+[1, 2, 3, 4, 5]		[2, 3]
+[1, 3, 5, 7]		[0, 4]
+
+public int[] solution(int[] num_list){
+	int[] answer = new int[2]; // 짝수와 홀수의 개수를 담을 배열의 크기
+
+	for(int i =0; i < num_list.length; i++){
+		if(num_list[i] % 2 == 0){ // 배열의 인덱스마다 값이 짝수일 경우
+			answer[0]++;
+		}else{
+			answer[1]++;
+		}
+	}
+
+	return answer;
+}
+/*======================================================================*/
+
+'자릿수 더하기'
+정수 n이 매개변수로 주어질 때 n의 각 자리 숫자의 합을 return하도록 solution 함수를 완성해주세요
+
+n		result
+1234	10
+930211	16
+
+public int solution(int n){
+	int answer = 0;
+
+	while(n > 0){
+		answer += n % 10; // n의 나머지 합산 | 1의 자리부터 합산
+		n /= 10; // 1의 자리를 빼가면서 숫자를 줄여나감
+	}
+	return answer;
+}
+
+/*======================================================================*/
+
+'숨어있는 숫자의 덧셈(1)'
+문자열 my_string이 매개변수로 주어집니다. my_string안의 모든 자연수들의 합을 
+return하도록 solution 함수를 완성해주세요.
+
+my_string			result
+"aAb1B2cC34oOp"		10
+"1a2b3c4d123"		16
+
+public int solution(String my_string) {
+        int answer = 0;
+
+		for(int i = 0; i < my_string.length(); i++){
+			char c = my_string.charAt(i);
+			if( c >= '0' && c <= '9'){ // 문자열에서 문자열 0~9 만 비교
+				answer += c - '0'; // 문자열 c - '0' 을 통해서 int형 answer에 저장
+			}
+		}
+        return answer;
+}
+
+/*======================================================================*/
+
+'n의 배수'
+정수 num과 n이 매개 변수로 주어질 때, num이 n의 배수이면 1을 
+return n의 배수가 아니라면 0을 return하도록 solution 함수를 완성해주세요.
+
+num		n		result
+98		2		1
+34		3		0
+
+	public int solution(int num, int n) {
+        int answer = 0;
+        
+		if(num % n == 0){ // num % n == 0 이면 배수
+			answer = 1;
+		}// 아닌경우 초기값 0 반환
+        
+        return answer;
+    }
+
+/*======================================================================*/
+
+'flag에 따라 다른 값 반환하기'
+두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag가 true면 a + b를 false면 a - b를
+return 하는 solution 함수를 작성해 주세요.
+
+a	b	flag	result
+-4	7	true	3
+-4	7	false	-11
+
+public int solution(int a, int b, boolean flag) {
+    int answer = 0;
+	if(flag){
+		answer = a + b;
+	}else{
+		answer = a - b;
+	}
+
+	return answer;
+}
+
+/*======================================================================*/
+
+'문자열 곱하기'
+문자열 my_string과 정수 k가 주어질 때, my_string을 k번 반복한 문자열을 
+return 하는 solution 함수를 작성해 주세요.
+
+my_string	k	result
+"string"	3	"stringstringstring"
+"love"		10	"lovelovelovelovelovelovelovelovelovelove"
+
+	public String solution(String my_string, int k) {
+        String answer = "";
+		
+		for(int i = 0; i < k; i++){
+			answer += my_string;
+		}
+
+        return answer;
+	}
+
+/*======================================================================*/
+
+'공배수'
+정수 number와 n, m이 주어집니다. number가 n의 배수이면서 m의 배수이면 1을 아니라면 0을 
+return하도록 solution 함수를 완성해주세요.
+
+number	n	m	result
+60		2	3	1
+55		10	5	0
+
+public int solution(int number, int n, int m) {
+    int answer = 0;
+
+	if(number % n == 0 && number % m == 0){
+		answer = 1;
+	}
+
+    return answer;
+}
 /*======================================================================*/
 
 /*======================================================================*/
 
 /*======================================================================*/
+
+/*======================================================================*/
+
+/*======================================================================*/
+
+/*======================================================================*/
+
+/*======================================================================*/
+
+/*======================================================================*/
+

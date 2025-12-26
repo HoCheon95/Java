@@ -29,17 +29,26 @@ random()메서드는 0.0이상 1.0미만 사이의 실수숫자 난수를 구함.
 Ramdom random = new Random(); // import util패키지 사용해야됨
 random.nextInt(10); // 0 ~ 9 까지
 
+Math.max
+ - 최대값
+Math.PI
+ - 원주율
+
 3. Scanner
 Scanner.nextInt();
 Scanner.next();
 Scanner.nextLine();
 
 int num = Integer.parseInt(scan.nextLine()); // 문자열로 한 줄 입력을 받은 뒤 -> 정수로 변환
+int num = Integer.parseInt(); // String -> int 형변환
 
 4. 비교함수
  1) equals()
 	s1[i].equals(s2[j]);
  2) contains()
     answer = str1.contains(str2); // 결과는 bloolean 형태
-	
-
+ 3) replace
+    str.replace('a', ''); // char 사용
+	str.replace("a", ""); // String 사용
+ 4) replaceAll
+    str.replaceAll("[0-9]","");

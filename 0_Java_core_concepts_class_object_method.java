@@ -61,6 +61,26 @@ class Counter{
 	Counter(){
 		count++; // 객체가 생성될 때마다 증가
 	}
+
+ (4) 레퍼런스(reference)
+  - 객체를 가리키는 주소값(또는 그 변수)
+--------------------
+표현            의미	 
+--------------------
+참조 변수        객체의 주소를 저장하는 변수
+레퍼런스 변수      참조 변수와 동일 
+레퍼런스         객체를 가리키는 주소값(또는 그 변수)
+"ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ"
+ex)
+String s = "hello";
+s : 참조변수 / 레퍼런스 변수
+"hello" : 객체
+s 안에는 객체 주소(레퍼런스)가 들어 있음
+"ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ"
+
+ (5) private(접근제어자)
+  - 같은 클래스 내부에서만 접근 가능 하도록 제한하는 접근 제어자
+
 }
 public class Main {
     public static void main(String[] args) {
@@ -128,12 +148,15 @@ Calc.add(1, 2);
 7) 생성자(Constructor)
  - 객체를 만들 때 딱 1번 실행되는 '초기화 전용 메서드 비슷한 것'
  - 특징
-   - 이름이 클래스명과 같음
-   - 리턴타입이 없음
-   - 생성자도 메서드의 일종이기 때문에 오버로딩이 가능하다.
-   - 기본 생성자는 매개변수가 없는 생성자를 말한다. 
+   - 이름이 '클래스명과 같음'
+   - 'new 클래스명();' 에 의해서 호출
+   - '리턴타입'이 없음
+   - 생성자도 '메서드의 일종'이기 때문에 '오버로딩이 가능'하다.
+   - '기본 생성자'는 '매개변수가 없는 생성자'를 말한다. 
      생성자가 오버로딩이 안된 경우에는 자바 컴파일러는 묵시적인 기본생성자를 제공한다
    - 생성자가 오버로딩이 되면 자바 컴팡일러는 더 이상 묵시적인 기본생성자를 제공하지 않는다.
+ - 같은 클래스에서 다른 생성자 호출 법
+   - this();
 
 /*======================================================================*/
 
@@ -143,23 +166,64 @@ Calc.add(1, 2);
  - this는 내 자신 인스턴스 가리키는 참조 변수이다.
 
  this.name = name;
+
+
 /*======================================================================*/
 
-class Tv07{			// class
-	String color;	// 멤버 변수
-	boolean power;	// 멤버 변수
-	int channel;	// 멤버 변수
-	static int count; // 정적변수
+9) 정적메서드
+ - static 이란 예약어 사용
+ - 인스턴스 차원이 아닌 클래스 차원에서 사용하도로고 설계
+   - 인스턴스(객체) 생성 없이 클래스명으로 호출 가능
+ - 'this 래퍼런스를 사용 불가' 65줄 참고
+ - '인스턴스 변수 사용 불가'
 
-	void power(){	// 메서드
-		int power;	// 지역 변수
-	}
-}
 
-public class ArrEx07  
-{
-	public static void main(String[] args) 
-	{
-		Tv07 tv = new Tv07();	// 객체
-	}
-}
+ 우클릭 Source
+Generate Getters and Setter Methods
+
+Select All
+ ㄴ 전체 getter, setter 선택
+ Deselect All
+  ㄴ 전체 해제
+
+Select Getters
+ ㄴ Gettser 선택
+Select Setters
+ ㄴ Setter 선택
+
+ 구글에 롬복 다운로드
+ 파일 다운로드 후 .jar -> java Program 붙여넣기
+D:\20251201_java\Program
+
+주소창에 cmd 입력
+java -jar lombok.jar
+ㄴ path 안잡혀서 그럼
+ㄴ 어디서든 java 명령어 실행하고 싶으면 아래 단계 실행
+
+java jdk 설치 경로 복사
+D:\20251201_java\Program\sts-4.32.2\sts-4.32.2.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.9.v20251105-0741\jre\bin
+
+내 pc 
+고급시스템 설정
+환경변수
+시스템변수 -> path 편집
+새로만들기
+경로 붙여넣기
+확인
+
+D:\20251201_java\Program cmd 재부팅
+
+Specify location
+SpringToolSuite4.exe 파일 선택
+
+인스톨
+퀵인스톨
+
+경로안에 lombok.jar 설치됐는지 체크 후 
+
+sts실행
+
+
+
+
+

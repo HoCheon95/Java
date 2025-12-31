@@ -43,7 +43,7 @@ int num = Integer.parseInt(scan.nextLine()); // 문자열로 한 줄 입력을 받은 뒤 ->
 int num = Integer.parseInt(); // String -> int 형변환
 
 4. 비교함수
- 1) equals()
+ 1) equals() // 문자열 비교함수
 	s1[i].equals(s2[j]);
  2) contains()
     answer = str1.contains(str2); // 결과는 bloolean 형태

@@ -178,9 +178,277 @@ public class Ex16_3 {
 }
 /*======================================================================*/
 
-/*======================================================================*/
+Day12_java/Ex16_4.java
+
+/* 16장.상속.pdf No.23쪽 3번문제)
+ * 문제는 강의교안 참고한다. 추가적인 문제는 부모클래스 메서드내에서 if~else문 대신 if문만 사용해도 된다.
+ * 부모클래스 각 메서드내의 실행문장으로 '소녀는 사람이다', '사람은 2발로 걷는다'로 처리하고 Dog동물 자손클래스에서
+ * 부모클래스 각 메서드를 오버라이딩을 한다음 실행문장으로 if문만 사용해서 '강아지는 동물이다', '강아지는 4발로 걷는다.'가
+ * 출력되는 자바코드를 완성해 본다.
+ */
+
+class Animal04 {// extends Object이 생략됨
+	protected String kind; // 어떤 종인지 저장할 변수(사람,강이지)
+	protected int leg; // 다리개수
+
+	public Animal04() {
+	}// 매개변수가 없는 기본생성자
+
+	public Animal04(String kind, int leg) {
+		this.kind = kind;
+		this.leg = leg;
+	}// 매개변수 개수가 다른 생성자 오버로딩
+
+	public void printKind() {
+		if (kind.equals("소녀")) {// String 문자열 참조타입 내장클래스 하위의 equals() 메서드는 객체주소를 비교하지 않고
+								// 문자열 내용값만 비교한다. 문자열 내용이 같으면 true, 다르면 false -> 문자열 값이
+								// 같다 다르다 비교는 ==(같다) 비교 연산을 사용하지 않고 equals()메서드르르 사용해야 한다.
+			System.out.println(kind + "는 사람이다.");
+		}
+	}// printKind() 사용자 저으이 메서드
+
+	public void walk() {
+		if (leg == 2) {
+			System.out.println("사람은 " + leg + " 발로 걷는다.");
+		}
+	}// walk() 사용자 정의 메서드
+
+}// Animal04 부모클래스
+
+class Dog04 extends Animal04 {
+	public Dog04() {
+	}
+
+	public Dog04(String kind, int leg) {
+		super(kind, leg);// 부모클래스 매개변수 2개짜리 오버로딩 된 생성자 호출
+	}
+
+	@Override
+	public void printKind() {// 메서드 오버라이딩
+		if (kind.equals("강아지")) {
+			System.out.println(kind + "는 동물이다.");
+		}
+	}
+
+	@Override
+	public void walk() {
+		if (leg == 4) {
+			System.out.println(kind + "는 " + leg + "발로 걷는다.");
+		}
+	}
+
+}// 첫번째 자손클래스 Dog04
+
+class Human04 extends Animal04 {
+	public Human04() {
+	}
+
+	public Human04(String kind, int leg) {
+		super(kind, leg);
+	}
+}// Human04 두번째 자손클래스
+
+public class Ex16_4 {
+
+	public static void main(String[] args) {
+		Dog04 d = new Dog04("강아지", 4);
+		d.printKind();
+		d.walk();
+
+		Human04 h = new Human04("소녀", 2);
+		h.printKind();
+		h.walk();
+
+	}
+
+}
+
+
+///////////////////////////////////////////////////////////////
+
+class Animal {
+	protected String kind;
+	protected int leg;
+
+	public Animal(String kind, int leg) {
+		this.kind = kind;
+		this.leg = leg; // 생성자의 주된 기능인 인스턴스 변수 초기화
+	}// 매개변수 2개까지 오버로딩 생성자
+
+	public void getKind() {
+		if ("소녀".equals(kind)) {
+			System.out.println("소녀는 사람이다.");
+		}
+	}// 어떤 동물인지 알려주는 메서드
+
+	public void walk() {
+		if (leg == 2) {
+			System.out.println("사람은 2발로 걷는다.");
+		}
+
+	}// 어떻게 걷는지 알려주는 메서드
+}// Animal 부모클래스
+
+class Dog extends Animal {
+	public Dog(String kind, int leg) {
+		super(kind, leg); // 부모클래스 오버로딩된 생성자 호출
+	}
+	
+	@Override
+	public void getKind() {
+		if ("강아지".equals(kind)) {
+			System.out.println(kind + "는 동물이다.");
+		}
+	}
+
+	@Override
+	public void walk() {
+		if (leg == 4) {
+			System.out.println(kind + "는 " + leg + "발로 걷는다.");
+		}
+	}
+}// Dog 자손클래스
+
+class Human extends Animal {
+	public Human(String kind, int leg) {
+		super(kind, leg); // 부모클래스 오버로딩된 생성자 호출
+	}
+}// Human 자손클래스
+
+public class Ex16_4 {
+
+	public static void main(String[] args) {
+		Dog d = new Dog("강아지", 4);
+		Human h = new Human("소녀", 2);
+
+		d.getKind();
+		d.walk();
+		h.getKind();
+		h.walk();
+
+	}
+
+}
 
 /*======================================================================*/
+
+Day12_java/Ex16_5.java
+
+/* 16장.상속.pdf No.26쪽 4번문제)
+ *  강의 교안 문제와 UML 클래스 다이어 그램을 보고 클래스 설계 자바 코드를 완성해 본다.
+ */
+
+class HandPhone05 extends Object{//extends Object은 생략가능
+	protected String model; //폰모델
+	protected String number;//폰번호
+	
+	public HandPhone05() { }
+	
+	public HandPhone05(String model, String number) {
+		this.model = model;
+		this.number = number;
+	}//매개변수 개수가 다른 생성자 오버로딩
+	
+}// HandPhone05 부모클래스
+
+class DicaPhone05 extends HandPhone05{
+	protected String pixel;//화소수
+	
+	public DicaPhone05() { }
+	
+	public DicaPhone05(String model, String number, String pixel) {
+		super(model, number);//부모클래스 오버로딩 된 생성자 호출
+		this.pixel = pixel;
+	}
+	
+	public void prnDicaPhone() {
+		System.out.println("모델명 : " + model + ", 폰번호 : " + number + ", 화소수 : " + pixel);
+	}
+}// DicaPhone05 자손클래스
+public class Ex16_5 {
+
+	public static void main(String[] args) {
+		
+		DicaPhone05 dp = new DicaPhone05("아이폰", "010-9999-9999", "2780");
+		dp.prnDicaPhone();
+		
+	}
+
+}
+
+//////////////////////////////////////////////////////////////////////
+
+class HandPhone {
+	protected String model;
+	protected String number;
+
+	public HandPhone(String model, String number) {
+		this.model = model;
+		this.number = number; // 생성자의 주된 기능인 인스턴스 초기화
+	}// 매개변수 2개짜리 오버로딩 생성자
+
+}// HandPhone 부모클래스
+
+class DicaPhone extends HandPhone {
+	protected String pixel;
+
+	public DicaPhone(String model, String number, String pixel) {
+		super(model, number); // 부모클래스에서 오버로딩된 생성자 호출
+		this.pixel = pixel;
+	}// 매개변수 3개 짜리 오버로딩 생성자
+	
+	public void prnDicaphone() {
+		System.out.println("모델명 : " + model + " 번호 : " + number + " 화소수 : " + pixel);
+	}// 사용자 정의 메서드
+	
+}// DicaPhone 자손 클래스
+
+public class Ex16_5 {
+
+	public static void main(String[] args) {
+
+		DicaPhone dp = new DicaPhone("갤럭시", "010", "1024");
+		dp.prnDicaphone();
+
+	}
+
+}
+
+/*======================================================================*/
+
+/*
+ * 16장.상속.pdf No.28쪽 5번문제)
+ */
+
+class TestSuper {
+	int i; //클래스 소속의 멤버변수 중 인스턴스 변수(속성) 정의, 초기 기본값 0
+	
+	TestSuper(){ } // 부모클래스에서 기본생성자 정의
+	
+	TestSuper(int i) {
+		this.i = i;
+	}// 생성자가 오버로딩 되면 매개변수가 없는 기본생성자 묵시적 제공을 안함
+	
+	//생성자가 오버로딩 되면 자바는 기본생성자를 묵시적으로 제공하지 않는다.
+	
+}
+
+class TestSub extends TestSuper{ 
+	/*
+	 * 답안) 컴파일 에러가 발생하는 이유는 부모클래스 생성자 오버로딩이 되면 부모의 기본생성자를 더이상 묵시적 제공을 하지 않는다.
+	 *      그런데 자손에서 부모의 묵시적으로 제공되지 않는 기본생성자를 호출할려다가 에러가 발생하는 것이다.
+	 */
+	// 자손의 기본생성자 묵시적으로 생략됨
+	
+}
+
+public class Ex16_6 {
+
+	public static void main(String[] args) {
+		new TestSub();// 자손의 기본생성자를 호출
+	}
+
+}
 
 /*======================================================================*/
 

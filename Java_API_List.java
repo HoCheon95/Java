@@ -9,15 +9,6 @@ System.out.printf()		// 형식 지정 출력
 %c : 문자
 \n : 줄바꿈
 
-Arrays.toString()		// 배열 출력
-charAt()				// 문자열 접근가능 | 1글자씩 접근 가능
-
-
-length
- - 길이 구하는 함수
-length();
- - 배열 인덱스의 문자열의 길이를 구하는 함수
- - answer[i] = strlist[i].length();
 2. 수학
 
 (int)(Math.random())
@@ -45,10 +36,54 @@ int num = Integer.parseInt(); // String -> int 형변환
 4. 비교함수
  1) equals() // 문자열 비교함수
 	s1[i].equals(s2[j]);
+	
  2) contains()
     answer = str1.contains(str2); // 결과는 bloolean 형태
+	
  3) replace
     str.replace('a', ''); // char 사용
 	str.replace("a", ""); // String 사용
+	
  4) replaceAll
     str.replaceAll("[0-9]","");
+  - Day15_java.AutoEx07.java 참고
+
+5. StringTokenizer
+ - 특수문자를 기준으로 문자열 분리
+ - Day15_java.AutoEx05.java 참고
+ 
+6. Calendar
+ - 컴퓨터 시스템의 년월일 시분초 값을 반환해 준다.
+  - Day15_java.AutoEx06.java 참고
+  
+7. toUpperCase()
+ - 영문대문자로 변경해 준다.
+ - Day15_java.AutoEx07.java 참고
+ 
+8. indexOf('e');
+ - 단일문자 e를 맨왼쪽에서 부터 찾아서 가장 먼저 나오는 해당위치번호를 맨 왼쪽 첫문자를 0부터 카운터해서 구한다.
+ - Day15_java.AutoEx07.java 참고
+ 
+9. StringBuffer();
+ - Day15_java.AutoEx07.java 참고
+ 
+10. Arrays.toString()		
+ - 배열 출력
+ - Day15_java.AutoEx07.java 참고 
+ 
+11. charAt(2)
+ - 첫문자를 0부터 시작해서 세번? 단일문자 e를 반환
+ - Day15_java.AutoEx07.java 참고
+ 
+12. length
+ - 길이 구하는 함수
+
+13. length();
+ - 배열 인덱스의 문자열의 길이를 구하는 함수
+ - answer[i] = strlist[i].length();
+ 
+14. toString();
+ - 배열 %s로 출력
+
+
+ 

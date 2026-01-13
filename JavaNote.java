@@ -469,3 +469,25 @@ class 자손클래스명 implements 부모인터페이스명
 		형식) public 리턴타입 메서드명(매개변수 ...) throws 예외처리클래스{
 			   실행문장;
 			  }
+		- 유효성 검증 메시지 만들기
+		Day17_java/src/TryEx07.java
+			
+		- for 반복문안에서 try~catch 문 처리
+		Day17_java/src/TryEx08.java
+		
+		- AutoCloseable 인터페이스 try 예시
+		Day17_java/src/TryEx09.java
+		
+		- 예외가 발생하지 않았을 때 try
+		Day17_java/src/TryEx10.java
+		Day17_java/src/TryEx11.java
+
+26. 멀티스레드
+	(1) 첫번째 멀티스레드 생성법
+	Day18_java/src/ThreadEx01.java
+		1. Thread 클래스를 상속하는 법
+		2. run() 메서드를 오버라이딩 해서 멀티스레드 문장 구현한다.
+		3. Thread 클래스를 상속받은 자손클래스에서 스레드 문장을 구현하면 기능이 멀티스레드 프로그램을 만들때는 좋지만,
+		   보다 더 복잡한 멀티스레드 프로그램을 만들 때는 불리하다. 
+		   단점으로 하나의 부모로 부터만 단일상속만 가능하다는 것이다.
+		
